@@ -2,7 +2,7 @@ import os
 import glob
 from decim import decim
 from coef_to_EO_convert import coef
-from numba import njit
+#from numba import njit
 import time 
 
 #@njit
@@ -18,7 +18,8 @@ path_to_asc='/media/gluk/ca1c79c0-ddfe-428e-8c1a-b57d5bbad96c/EO_CONVERT/ASC'
 #path_to_asc_1min_day='/home/gluk/EO_CONVERT/ASC/1min' #Сюда запишем окончательные суточные файлы с дискретизацией 1 минута.
 path_to_asc_1min_day='/media/gluk/ca1c79c0-ddfe-428e-8c1a-b57d5bbad96c/EO_CONVERT/ASC/1min'
 path_to_tmpfs='/mnt/tmpfs' #Директория в оперативной памяти. Настраивается отдельно. Сюда складываем файлы после процедуры decim. Их будем записывать в окончательные файлы. Просто так удобней, не нужно заморачиваться с переменными.
-koeff=(0.0012324169, 0.001267882, 0.00032246) #Коэффициенты регистратора DATAMARK LS-7000 и наклономера AP-702 для станции KLYT
+#koeff=(0.0012324169, 0.001267882, 0.00032246) #Коэффициенты регистратора DATAMARK LS-7000 и наклономера AP-702 для станции KLYT
+koeff=(0.34981, 0.3649, 0.09532) #Коэффиценты для HKS станции APHT 
 
 def write_fl(df_for_user, path_to_asc_1min_day,name_fl):
 #	print(df_for_user)

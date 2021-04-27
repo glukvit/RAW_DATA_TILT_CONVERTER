@@ -13,8 +13,6 @@ def write_to_tmps(path_to_tmpfs,fin_df,date_fl):
 	os.chdir(curph)
 	return(name_of_file,short_name)
 
-
-
 def decim(desteny_dir,path_to_tmpfs):
 	curph=os.getcwd() 
 	os.chdir(desteny_dir) #Переходим в суточную директорию с asc файлами
@@ -47,7 +45,7 @@ def decim(desteny_dir,path_to_tmpfs):
 			temp_df=temp_df[cols_for_temp_df] #Переставляем столбцы местами
 
 			fin_df=fin_df.append(temp_df[['DATE',0,1,2,3]])
-#			fin_df=fin_df.append(temp_df[['DATE',0,1,2]]) #	КОГДА НЕТ ТРЕТЬЕГО КАНАЛА С МИКРОФОНОМ
+#			fin_df=fin_df.append(temp_df[['DATE',0,1,2]]) #	КОГДА НЕТ ТРЕТЬЕГО КАНАЛА С МИКРОФОНОМ	
 	
 	name_fl_in_tmpfs,name_of_file=write_to_tmps(path_to_tmpfs,fin_df,date_fl)#Пишем датафрей в файл в директорию ОЗУ. На вход путь_до_директории, датафрейм, дата_для_файла.
 		
