@@ -1,16 +1,18 @@
 import os
 import pandas as pd
 from dir_list import get_file_list
-
-def dcm_HKS(path_to_100hz_asc, path_to_1min_csv, path_to_1hour_csv): # Получаем список файлов в директории 100hz
-    
+#Модуль берет данные в scv формате  из path_to_100hz_asc децимирует их и сохраняет минутные файлы в path_to_1min_csv, часовые в path_to_1hour_csv
+#Вызывается модуль из скрипта HKS_convert.py
+def dcm_HKS(path_to_100hz_asc, path_to_1min_csv, path_to_1hour_csv): # Децимация. На вход путь к scv-файлам 100Гц (это обрабатываемые файлы)
+# path_to_1min_csv сюда складываются децимированные минутные файлы
+# path_to_1hour_csv сюда складываются децимированные часовые файлы
     filelist = get_file_list(path_to_100hz_asc) #Вызываем модуль и получаем полный список всех файлов.
 
     for every in filelist: #Открываем каждый часовой файл 
-	    if os.path.getsize(every) != 0:
+	    if os.path.getsize(every) != 0: #Если файл не нулевой длины обрабатываем
                 print('Децимирую: ', every)
                 fin_df = pd.DataFrame() #Сюда сложим все данные
-                df=pd.read_csv(every, header=None, sep = ' ')
+                df=pd.read_csv(every, header=None, sep = ' ') #Читаем исходный файл
                 df['DATE'] = df[1].str.cat(df[2], sep = ' ') #Соединяем два столбца со временем чтобы получить дату в нужном формате
                 cols = [0, 'DATE',3] #Выбираем нужные столбцы и расставляем их в нужном порядке
                 df = df[cols] #Переопределяем датафрейм 0-номер канала, 'DATE'-дата, 3-номер столбца с отчетами
