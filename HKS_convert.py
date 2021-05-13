@@ -1,7 +1,7 @@
 import os
 import shutil
 import glob
-from decim import decim
+#from decim import decim
 import time 
 from dir_list import get_file_list #Модуль для получения списка файлов в директории
 from convert_with_A1win import convert_fl #Непосредственно модуль конвертации запускает Сишный скрипт конвертации
